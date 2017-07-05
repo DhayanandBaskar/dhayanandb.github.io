@@ -1,0 +1,161 @@
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 300;
+	background-color: #293d72;
+	color: white;
+}
+/* link style */
+a {
+	font-size: 100%;
+	
+}
+a:link {
+	color: #E74C3C;
+}
+
+a:visited {
+	color: #f0f8ff;
+}
+
+input { width: 250px; }
+
+/* mouse over link */
+a:hover {
+	font-size: 110%;
+	text-decoration: none;
+}
+
+
+.beauty-border {
+	border: 4px solid white;
+	border-radius: 5%;
+}
+.beauty-border:hover {
+	padding: 0.5%;
+}
+
+.text-right {
+	padding-right: 2%;
+}
+
+.title-flex {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.title-logo {
+	padding-top: 20px;
+	width: 60%;
+	height: 60%;
+}
+.title-ruler {
+	border: none;
+	height: 4px;
+	background-color: #bcbbbb;
+}
+
+.style-border {
+	border: 4px solid gray;
+	border-radius: 2%;
+}
+
+.component-size {
+	width: 100%;
+	height: 400px;
+	padding: 1%;
+	background-color: #0e2f44;
+	color: white;
+}
+
+.component {
+	padding: 1%;
+}
+.modal-dialog{
+position: absolute;
+left: 50%;
+margin-left: -312px;
+top: 50%;
+margin-top: -250px;
+} 
+.img-property {
+	margin-top: 1%;
+	margin-left: 5%;
+	margin-right: 8%;
+	margin-bottom: 5%;
+	float: left;
+	background-color: red;
+	border: 5px solid white;
+}
+
+.img-model-property {
+	margin-top: 1%;
+	margin-left: 5%;
+	margin-right: 8%;
+	margin-bottom: 5%;
+	float: left;
+	border: 5px solid gray;
+	width: 240px;
+	height: 280px;
+}
+.floter {
+	float: left;
+}
+#modelHolder {
+	color: black;
+	font-family: 'Petit Formal Script', cursive;
+}
+
+span.stars, span.stars span {
+    display: block;
+    background: url(stars.png) 0 -16px repeat-x;
+    width: 80px;
+    height: 16px;
+}
+
+span.stars span {
+    background-position: 0 0;
+}
+
+.form-group {
+	color: black;
+}
+
+.sorter {
+	margin: 1%;
+	padding: 1%;
+	background-color: #0e2f44;
+	color: white;
+	border: 4px solid gray;
+	border-radius: 3%;
+}
+.stats {
+	margin: 1%;
+	padding: 2%;
+	background-color: #0e2f44;
+	color: white;
+	border: 4px solid gray;
+	border-radius: 3%;
+}
+
+/* media query */
+
+@media only screen and (max-width: 380px) {
+	.img-property {
+	width: 180px;
+	height: 230px;
+}
+}
+
+@media only screen and (max-width: 464px) and (min-width: 381px) {
+	.img-property {
+	width: 220px;
+	height: 250px;
+}
+}
+
+@media only screen and (min-width: 465px) {
+	.img-property {
+	width: 240px;
+	height: 280px;
+}
+}

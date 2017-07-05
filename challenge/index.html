@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>BookHub</title>
+		<!--Font -->
+		<link href='https://fonts.googleapis.com/css?family=Petit+Formal+Script' rel='stylesheet' type='text/css'>
+		<!--Bootstrap and Star rating CSS -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.css">
+		<!--Custom CSS -->
+		<link rel="stylesheet" href="style.css">
+
+	</head>
+
+	<body>
+		<!--Header -->
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4">
+						<h1>BookHub</h1>
+						<h3 class="title-flex">-- Search books made easy</h3>
+					</div>
+					<div class="col-md-4 text-center">
+						<h4 class="title-flex"><a href="http://dhayanand.com/bookhubspec.html" target="_blank">Spec Sheet for the side</a></h4>
+						<h4 class="title-flex"><a href="http://dhayanand.com/challenge/bookhub.html" target="_blank"><i>Live hosted version</i></a></h4>
+					</div>
+					<div class="col-mid-4 text-right">
+						<h3>DhayanandBaskar</h3>
+						<h4 class="title-flex"><a href="http://dhayanand.com/" target="_blank">Portfolio</a></h4>
+						
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--Ruler -->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<hr class="title-ruler">
+				</div>
+			</div>
+		</div>
+		<!--Control panel -->
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-3 ">
+      					<input id="search" type="text" class="form-control" placeholder="Live search for name, author, rating">
+				</div>
+				
+				<div class="col-lg-3 sorter">
+
+					<h2>Sort by</h2>
+					<div class="choise">
+						<form id ="sortOptionsPanel" role="form">
+    						<div class="radio">
+      							<label><input type="radio" name="optradio" data-sort="sortbyPrice" id="rating">Price</label>
+    						</div>
+   							 <div class="radio">
+      							<label><input type="radio" name="optradio" data-sort="sortbyRating" id="likes">Rating</label>
+    						</div>
+    						<div class="radio">
+      							<label><input type="radio" name="optradio" data-sort="default" id="likes" checked="">Default</label>
+    						</div>
+  						</form>
+						</div>
+					</div>
+				<div class="col-lg-5 stats">
+					<h3   class="floter">Total Books: <span id="totalBook"></span> |</h3>
+					<h3 >Total BookMarks: <span id="totalBookmark"></span></h3>
+				</div>
+			</div>
+		</div>
+		<!--Ruler -->
+		<div id="totalContent" class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<hr class="title-ruler">
+				</div>
+			</div>
+		</div>
+		<!--Main Content -->
+		<div  class="container">
+			<div id="content" class="row">
+				<!--This line will be removed if JavaScript exist -->
+				<h2 class="text-center" id="jsFailed">Sorry, Enable Javascript in your browse or switch to a Javascript supported browser</h2>
+			</div>
+			<!--Holds the models -->
+			<div id="modelHolder">
+			
+			</div>
+		</div>
+
+		<!-- Template for content -->
+		<script type="text/x-handlebars-template" id="contentTemplate">
+			
+			{{#each this}}
+			<div class="col-lg-6 component">
+				<div class="component-size style-border">
+						<h3 class="text-center">{{name}}</h3><div class="pull-right" id="{{starRating}}"></div>
+						<button id="{{buttonId}}" data-index="{{id}}" type="button" class="btn btn-primary pull-right glyphicon glyphicon-star-empty"></button>
+						<img class="img-property"src="{{image}}" alt="bookImage"data-toggle="modal" data-target="#bookNo{{id}}"/><br><br>		
+						<h4>Average Rating:<i> {{rating}}</i></h4>
+						<span class="glyphicon glyphicon-user floter" aria-hidden="true">&nbsp;</span><h4>Author:<i> {{author}}</i></h4>
+						<span class="glyphicon glyphicon-usd floter" aria-hidden="true">&nbsp;</span><h4>Price:<i>{{pricedAt}}</i></h4>
+						<span class="glyphicon glyphicon-home floter" aria-hidden="true">&nbsp;</span><h4>ISBN:<i>{{details.ISBN}}</i></h4>
+			            <span class="glyphicon glyphicon-tag floter" aria-hidden="true">&nbsp;</span><h4>Publisher: <i>{{details.Publisher}}</i></h4>
+						<span class="glyphicon glyphicon-link floter" aria-hidden="true">&nbsp;</span><h4>Binding:<i> {{details.Binding}}</i></h4>
+				</div>
+			</div>
+			{{/each}}
+		</script>
+			<!-- Template for module -->
+		<script type="text/x-handlebars-template" id="moduleTemplate">
+			
+			{{#each this}}
+			<div class="modal fade" id="bookNo{{id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel{{id}}" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h4 class="modal-title" id="myModalLabel1">{{name}}</h4>
+							</div>
+							<div class="modal-body modal-align">
+								<img class="img-model-property" src="{{image}}" alt="book {{id}}"/>
+								<p class="better-text-p">
+									{{description}}
+								</p>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">
+									Close
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			{{/each}}
+		</script>
+		
+		<!-- Script for Jquery and Bootstrap -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
+		<!-- Script for star-rating and Underscore -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/rateYo/2.0.1/jquery.rateyo.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+		
+		<!-- Script for handlebars -->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+		
+		<!-- Logic script -->
+		<script src="script.js"></script>
+	</body>
+</html>

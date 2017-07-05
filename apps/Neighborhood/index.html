@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Neighborfood Map</title>
+
+    <!--Bootstrap and Star rating CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!--Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+    <div class="container-fluid">
+        <div class="row">
+            <h2 class="text-center">Banglore restaurants</h2>
+            <form>
+                <div class="form-group">
+                    <input type="text" id="searchbar" name="searchbar" class="form-control" data-bind="value: search, valueUpdate: 'afterkeydown'" placeholder="Name of restaurants">
+                </div>
+            </form>
+
+        </div>
+        <div class="row">
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav" data-bind="foreach: filteredItems">
+                            <li>
+                                <a href="#" data-bind="text: $data.name, click: $parent.setPlace"></a>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!--/.container-fluid -->
+            </nav>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-sm-12" id="map"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 ig" id="ig">
+                <h4>Flickr Photos</h4>
+                <div id="image-area" data-bind="foreach: { data: imgList, as: 'img' }">
+                    <div class="ig-div">
+                        <img data-bind="attr: { src : img.url }" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script for Jquery and Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <!-- Script for Underscore -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.0/knockout-min.js"></script>
+
+    <!-- Logic script -->
+    <script src="script.js"></script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAPc6cZqSVzTSy6wQPLctqMCz7BjDMT6hk&callback=init" onerror="googleError()"></script>
+</body>
+
+</html>
